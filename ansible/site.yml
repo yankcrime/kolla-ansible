@@ -677,6 +677,15 @@
         tags: searchlight,
         when: enable_searchlight | bool }
 
+- name: Apply role Shibboleth
+  gather_facts: false
+  hosts: shibboleth
+  serial: '{{ serial|default("0") }}'
+  roles:
+    - { role: shibboleth,
+        tags: shibboleth,
+        when: enable_shibboleth | bool }
+
 - name: Apply role tacker
   gather_facts: false
   hosts:

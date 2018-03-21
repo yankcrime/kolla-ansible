@@ -1,0 +1,13 @@
+---
+project_name: "shibboleth"
+
+shibboleth_services:
+  - shibboleth
+
+####################
+# Docker
+####################
+shibboleth_install_type: "{{ kolla_install_type }}"
+shibboleth_tag: "{{ openstack_release }}"
+shibboleth_image: "{{ docker_registry ~ '/' if docker_registry else '' }}{{ docker_namespace }}/{{ kolla_base_distro }}-{{ shibboleth_install_type }}-shibboleth"
+shibboleth_image_full: "{{ shibboleth_image }}:{{ shibboleth_tag }}"

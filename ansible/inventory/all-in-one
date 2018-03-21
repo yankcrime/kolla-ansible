@@ -210,6 +210,9 @@ control
 [searchlight:children]
 control
 
+[shibboleth:children]
+control
+
 [octavia:children]
 control
 

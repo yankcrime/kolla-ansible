@@ -1,0 +1,19 @@
+---
+- name: Ensuring config directories exist
+  file:
+    path: "{{ node_config_directory }}/{{ item }}"
+    state: "directory"
+    recurse: yes
+  when:
+    - inventory_hostname in groups[item]
+  with_items:
+    - "shibboleth"
+
+- name: Copying over shibboleth2.xml configuration file
+  template:
+    src: "{{ item }}.xml.j2"
+    dest: "{{ node_config_directory }}/{{ item }}/shibboleth2.xml"
+  when:
+    - inventory_hostname in groups['control']
+  with_items:
+    - "shibboleth"
